@@ -18,14 +18,14 @@ const ContentList = ({data}) => {
     )
 }
 
-// const mapStateToProps = (state, ownProps) => {
-//     console.log("STATE", state.contents["Page1"]);
-//     return {
-//         contents: state.contents
-//     }
-// }
+const mapStateToProps = (state, ownProps) => {
+    console.log("STATE", state.contents["Page1"]);
+    return {
+        contents: state.contents
+    }
+}
 
-// export default connect(mapStateToProps)(ContentList)
+export default connect(mapStateToProps)(ContentList)
 
-export default ContentList;
+// export default ContentList;
 

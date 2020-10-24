@@ -1,9 +1,21 @@
-import React from 'react'
+import React from 'react';
+import {connect} from "react-redux";
+import {searchContents} from "../redux/actions/action";
+import {store} from "../redux/store";
 
-export default function SearchInput() {
+
+const SearchInput = () => {
     return (
         <input onChange={(e) => (
-            console.log(e.target.value)
-        )} className="text-black w-10/12"/>
+            store.dispatch(searchContents(e.target.value))
+        )} className="text-black w-10/12" />
     )
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        searchTerm: state.searchTerm
+    }
+}
+
+export default connect(mapStateToProps)(SearchInput)

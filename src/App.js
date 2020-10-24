@@ -17,9 +17,9 @@ export default function App() {
         Page3: contentList3
     }
 
-    // useEffect(() => {
-    //     store.dispatch(loadContents(data));
-    // })
+    useEffect(() => {
+        store.dispatch(loadContents(data));
+    })
 
     return (
         <div className="overflow-hidden bg-gray-900 overflow-y-scroll">
