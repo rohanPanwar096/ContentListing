@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {searchContents} from "../redux/actions/action";
 import {store} from "../redux/store";
 
-
 const SearchInput = () => {
     return (
         <input onChange={(e) => (
