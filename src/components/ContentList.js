@@ -8,8 +8,8 @@ const ContentList = ({data}) => {
         <div className="flex flex-wrap justify-center items-center">
           {data.Page1.map(data => {
             return (
-                <div className="mr-6 mb-10">
-                    <img src={require(`../slices/${data["poster-image"]}`)} className="w-32 md:w-11/12" />
+                <div className="mx-3 mb-10">
+                    <img src={require(`../slices/${data["poster-image"]}`)} className="w-24 md:w-11/12" />
                     <h1 className="text-white text-sm sm:text-lg">{data.name}</h1>
                 </div>
             )

@@ -22,7 +22,7 @@ export default function App() {
     // })
 
     return (
-        <div className="bg-gray-900 h-screen">
+        <div className="overflow-hidden bg-gray-900 overflow-y-scroll">
             <SearchBar />
             <ContentList data={data} />
         </div>
