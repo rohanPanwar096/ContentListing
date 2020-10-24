@@ -2,11 +2,13 @@ import React from 'react';
 import Content from "./Content";
 import {connect} from "react-redux";
 
-const ContentList = ({data}) => {
-   console.log("DATA", data)
+const ContentList = ({contents}) => {
+  if(!contents.Page1) {
+      return null;
+  }
     return (
         <div className="flex flex-wrap justify-center items-center">
-          {data.Page1.map(data => {
+          {contents.Page1.map(data => {
             return (
                 <div className="mx-3 mb-10">
                     <img src={require(`../slices/${data["poster-image"]}`)} className="w-24 md:w-11/12" />
@@ -19,9 +21,9 @@ const ContentList = ({data}) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("STATE", state.contents["Page1"]);
+    console.log("STATE", state.contents.mainData);
     return {
-        contents: state.contents
+        contents: state.contents.mainData
     }
 }
 

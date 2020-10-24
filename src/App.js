@@ -5,26 +5,21 @@ import data2 from "./api/CONTENTLISTINGPAGE-PAGE2.json";
 import data3 from "./api/CONTENTLISTINGPAGE-PAGE3.json";
 import { loadContents } from "./redux/actions/action";
 import {store} from "./redux/store";
-import ContentList from "./components/ContentList"
+import ContentList from "./components/ContentList";
+import axios from "axios";
 
 export default function App() {
-    const contentList1 = data1.page["content-items"].content;
-    const contentList2 = data2.page["content-items"].content;
-    const contentList3 = data3.page["content-items"].content;
-    const data = {
-        Page1: contentList1,
-        Page2: contentList2,
-        Page3: contentList3
-    }
 
-    useEffect(() => {
-        store.dispatch(loadContents(data));
+    useEffect(async () => {
+        const response = await axios.get("http://localhost:8080/data")
+        console.log("Redsp",response.data);
+        store.dispatch(loadContents(response.data));
     })
 
     return (
         <div className="overflow-hidden bg-gray-900 overflow-y-scroll">
             <SearchBar />
-            <ContentList data={data} />
+            <ContentList />
         </div>
     )
 }
