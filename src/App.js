@@ -17,14 +17,14 @@ export default function App() {
         Page3: contentList3
     }
 
-    useEffect(() => {
-        store.dispatch(loadContents(data));
-    })
+    // useEffect(() => {
+    //     store.dispatch(loadContents(data));
+    // })
 
     return (
         <div className="bg-gray-900 h-screen">
             <SearchBar />
-            <ContentList />
+            <ContentList data={data}/>
         </div>
     )
 }
