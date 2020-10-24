@@ -1,0 +1,2 @@
+export const LOAD_CONTENTS = "LOAD_CONTENTS";
+export const SEARCH_CONTENTS = "SEARCH_CONTENTS";
