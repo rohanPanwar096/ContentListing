@@ -24,7 +24,7 @@ export default function App() {
     return (
         <div className="bg-gray-900 h-screen">
             <SearchBar />
-            <ContentList data={data}/>
+            <ContentList data={data} />
         </div>
     )
 }
