@@ -4,12 +4,10 @@ import VisibilitySensor from "react-visibility-sensor";
 import {connect} from "react-redux";
 import {store} from "../redux/store";
 import {loadContents} from "../redux/actions/action";
-import Page1 from "../api/CONTENTLISTINGPAGE-PAGE1.json";
 
 const ContentList = ({contents, searchTerm}) => {
     console.log("contents",contents)
     console.log("SEARCHTERM", searchTerm)
-    console.log("MAIN PAGE 1",Page1)
 
     const [page, setPage] = useState(1);
 
