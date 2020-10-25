@@ -1,18 +1,43 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Content from "./Content";
+import VisibilitySensor from "react-visibility-sensor";
+import axios from "axios"
 import {connect} from "react-redux";
+import {store} from "../redux/store";
+import {loadContents} from "../redux/actions/action";
 
 const ContentList = ({contents, searchTerm}) => {
-  if(!contents.Page1) {
-      return null;
-  }
+    console.log("contents",contents)
+    console.log("SEARCHTERM", searchTerm)
 
-  console.log(contents.Page1.page["content-items"].content)
-  console.log("SEARCHTERM", searchTerm)
-    return <Content contents={contents} searchTerm={searchTerm} />
+    const [page, setPage] = useState(1)
+
+    const onListEnd = async (isVisible) => {
+        if(isVisible) {
+            const response = await axios.get(`http://localhost:8080/data/page/${page}`)
+            console.log("Response",response.data);
+            store.dispatch(loadContents(response.data));
+            setPage(page + 1)
+        }
+    }
+
+    return (
+        <div className="flex flex-wrap justify-center items-center">
+            {contents.map(data => {
+              if(data.name.toLowerCase().includes(searchTerm)) {
+                return <Content data={data} />
+              }
+            })}
+            <VisibilitySensor onChange={onListEnd}>
+                <div style={{visibility:"hidden"}}>
+                    EOL dummy div
+                </div>
+            </VisibilitySensor>
+        </div>
+    )
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     console.log("STATE", state.contents.mainData);
     return {
         contents: state.contents.mainData,
@@ -22,5 +47,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(mapStateToProps)(ContentList)
 
-// export default ContentList;
+
 
