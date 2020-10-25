@@ -10,6 +10,14 @@ app.get("/data", cors(), (req, res) => {
     return res.send({Page1, Page2, Page3});
 })
 
+// app.get("/data/Page2", cors(), (req,res) => {
+//     return res.send({Page2});
+// })
+
+// app.get("/data/Page3", cors(), (req,res) => {
+//     return res.send({Page3});
+// })
+
 app.listen(8080, () => {
     console.log("SERVER is up on port 8080.");
 });

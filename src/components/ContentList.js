@@ -9,20 +9,7 @@ const ContentList = ({contents, searchTerm}) => {
 
   console.log(contents.Page1.page["content-items"].content)
   console.log("SEARCHTERM", searchTerm)
-    return (
-        <div className="flex flex-wrap justify-center items-center">
-          {contents.Page1.page["content-items"].content.map(data => {
-              if(data.name.toLowerCase().includes(searchTerm)) {
-                  return (
-                <div className="mx-3 mb-10">
-                    <img src={require(`../slices/${data["poster-image"]}`)} className="w-24 md:w-11/12" />
-                    <h1 className="text-white text-sm sm:text-lg">{data.name}</h1>
-                </div>
-              ) 
-            }
-          })}
-        </div>
-    )
+    return <Content contents={contents} searchTerm={searchTerm} />
 }
 
 const mapStateToProps = (state, ownProps) => {

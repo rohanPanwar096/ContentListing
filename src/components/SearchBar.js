@@ -6,7 +6,7 @@ import SearchInput from "../components/SearchInput";
 export default function SearchBar() {
     const [search, setSearch] = useState(false);
     return (
-        <div className="flex justify-between items-center px-6 py-10  text-white">
+        <div className="flex justify-between items-center px-6 py-8 text-white">
             {search ?  <SearchInput /> : (
             <div className="flex self-start items-center">
               <FaArrowLeft className="mr-2"/>
