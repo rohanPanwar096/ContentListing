@@ -2,7 +2,6 @@ import React from 'react'
 import SearchBar from "./components/SearchBar";
 import ContentList from "./components/ContentList";
 
-
 export default function App() {
     return (
         <div className="overflow-hidden bg-gray-900">

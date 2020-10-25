@@ -1,23 +1,33 @@
 import React, {useState} from 'react';
 import Content from "./Content";
 import VisibilitySensor from "react-visibility-sensor";
-import axios from "axios"
 import {connect} from "react-redux";
 import {store} from "../redux/store";
 import {loadContents} from "../redux/actions/action";
+import Page1 from "../api/CONTENTLISTINGPAGE-PAGE1.json";
 
 const ContentList = ({contents, searchTerm}) => {
     console.log("contents",contents)
     console.log("SEARCHTERM", searchTerm)
+    console.log("MAIN PAGE 1",Page1)
 
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(1);
+
+    const fetchData = (page) => {
+        return new Promise((resolve, reject) => {
+            if(page !== 4) {
+               resolve(require(`../api/CONTENTLISTINGPAGE-PAGE${page}.json`)); 
+            }
+        })
+    }
 
     const onListEnd = async (isVisible) => {
         if(isVisible) {
-            const response = await axios.get(`http://localhost:8080/data/page/${page}`)
-            console.log("Response",response.data);
-            store.dispatch(loadContents(response.data));
-            setPage(page + 1)
+            const response = await fetchData(page);
+            console.log("Response",response.page["content-items"].content);
+            store.dispatch(loadContents(response.page["content-items"].content));
+
+            setPage(page + 1);
         }
     }
 

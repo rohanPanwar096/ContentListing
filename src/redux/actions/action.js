@@ -4,7 +4,7 @@ export const loadContents = (contents) => {
 
     return {
         type: LOAD_CONTENTS,
-        payload: contents.page.page["content-items"].content
+        payload: contents
     }
 }
 
