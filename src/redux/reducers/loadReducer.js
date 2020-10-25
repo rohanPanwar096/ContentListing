@@ -2,7 +2,7 @@ import {LOAD_CONTENTS, SEARCH_CONTENTS} from "../constants/action-types";
 
 const INITIAL_STATE = {
     mainData: [],
-    searchTerm: []
+    searchTerm: ""
 }
 
 export const loadReducer = (state=INITIAL_STATE, action) => {

@@ -32,7 +32,7 @@ const ContentList = ({contents, searchTerm}) => {
     return (
         <div className="flex flex-wrap justify-center items-center">
             {contents.map(data => {
-              if(data.name.toLowerCase().includes(searchTerm)) {
+              if(data.name.toLowerCase().includes(searchTerm.toLowerCase())) {
                 return <Content data={data} />
               }
             })}
