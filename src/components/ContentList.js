@@ -6,9 +6,6 @@ import {store} from "../redux/store";
 import {loadContents} from "../redux/actions/action";
 
 const ContentList = ({contents, searchTerm}) => {
-    console.log("contents",contents)
-    console.log("SEARCHTERM", searchTerm)
-
     const [page, setPage] = useState(1);
 
     const fetchData = (page) => {
@@ -22,7 +19,6 @@ const ContentList = ({contents, searchTerm}) => {
     const onListEnd = async (isVisible) => {
         if(isVisible) {
             const response = await fetchData(page);
-            console.log("Response",response.page["content-items"].content);
             store.dispatch(loadContents(response.page["content-items"].content));
 
             setPage(page + 1);
@@ -46,7 +42,6 @@ const ContentList = ({contents, searchTerm}) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log("STATE", state.contents.mainData);
     return {
         contents: state.contents.mainData,
         searchTerm: state.contents.searchTerm
